@@ -1,0 +1,27 @@
+
+/**
+ * This is the class that defines the Inventory Item of a company 
+ * 
+ * @author 
+ * 
+ */
+public class Item
+{
+    // the instance variables (fields)
+    
+
+    // the constructors
+   
+    
+    //  the accessors   
+    
+    
+    // the mutators
+   
+
+    // place the processing methods here 
+    
+    
+    // place the print and toString methods here
+    
+}

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\r\n\ \ Based\ on\ the\ user's\ choice,\ transactions\ are\ processed\r\n
+comment1.params=
+comment1.target=void\ mainMenu()
+comment1.text=\r\n\ \ The\ Main\ menu\r\n
+comment2.params=items\ info
+comment2.target=void\ invMenuChoice(int,\ int)
+comment3.params=
+comment3.target=void\ invMenu()
+comment3.text=\r\n\ \ The\ Inventory\ Maintenance\ menu\r\n
+numComments=4
