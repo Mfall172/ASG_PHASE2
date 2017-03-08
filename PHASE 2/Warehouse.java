@@ -17,14 +17,15 @@ public class Warehouse
     String warehouse_Items[];
     String info_Array[];
     Item item = new Item();
-    
+
     //Length of List and Info
     int length_Of_List = 0;
     int length_Of_Info = 0;
-    
+
     private final static int MAX = 60;
     private ArrayList<Item> item_List = new ArrayList<Item>();
 
+    String itemNumber;
     String itemInfo;
     String itemNameInfo;
     int onHandInfo;
@@ -40,7 +41,7 @@ public class Warehouse
     {
         warehouse_Items = new String [MAX];
     }
-    
+
     //Will load the data
     public int loadData(String file)throws IOException
     {
@@ -91,7 +92,7 @@ public class Warehouse
     }
 
     //This class will check if the item number is valid.
-    public void validItemNumber(int items, int info, int menuChoice)
+    public String validItemNumber(int items, int info)
     {
         Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
@@ -116,18 +117,9 @@ public class Warehouse
 
         if(valid == true)
         {
-            System.out.println("Valid Item Number" + " Menu Choice is: " + menuChoice);
-            switch(menuChoice)
-            {
-                case 1: System.out.println("Inventory Information Inquiry: ");inventoryInformationInquiry(itemNumber, items, info);break;
-                case 2: System.out.println("Order inventory items from Supplier: ");orderInventoryItems(itemNumber, items, info);break;
-                case 3: System.out.println("Receive shipment from Suppliers: ");receiveShipmentFromSuppliers(itemNumber, items, info);break;
-                case 4: System.out.println("Return items to Supplier: ");returnItemsToSupplier(itemNumber, items, info);break;
-                case 5: System.out.println("Ship items to Customers: ");shipItemsToCustomers(itemNumber, items, info);break;
-                case 6: System.out.println("Process Customer Order: ");processCustOrder(itemNumber, items, info);break;
-                case 7: System.out.println("Process Customer Returns: ");processCustReturn(itemNumber, items, info);break;
-            }
+            System.out.println("Valid Item Number:" + infoID);
         }
+        return infoID;
     }
 
     //This will set all the items that passed through the valididation.
@@ -147,8 +139,9 @@ public class Warehouse
     }
 
     //Will check to see if the inventory is available for customers.
-    public void inventoryInformationInquiry(String itemNumber, int items, int info)
+    public void inventoryInformationInquiry(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         if (foundItem == null)
@@ -162,8 +155,9 @@ public class Warehouse
     }
 
     //Will order items for the customer.
-    public void orderInventoryItems (String itemNumber, int items, int info)
+    public void orderInventoryItems (int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.print("Enter the amount of "+ foundItem.getItemName() + " to be ordered: ");
@@ -184,8 +178,9 @@ public class Warehouse
     }
 
     //Will be receiving shipments from the supplier.
-    public void receiveShipmentFromSuppliers(String itemNumber, int items, int info)
+    public void receiveShipmentFromSuppliers(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.print("Enter the amount of shipments received from the suppliers: ");
@@ -197,8 +192,9 @@ public class Warehouse
     }
 
     //Returning to items to the supplers. Meaning that customers did not want the item(s) anymore.
-    public void returnItemsToSupplier(String itemNumber, int items, int info)
+    public void returnItemsToSupplier(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.println("Enter the amount that will be returned to the supplier: ");
@@ -209,8 +205,9 @@ public class Warehouse
     }
 
     //Shipping the items to the customers.
-    public void shipItemsToCustomers(String itemNumber, int items, int info)
+    public void shipItemsToCustomers(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.println("Enter the amount that is requested to be shipped to the customer: ");
@@ -222,8 +219,9 @@ public class Warehouse
     }
 
     //Processing Customer orders.
-    public void processCustOrder(String itemNumber, int items, int info)
+    public void processCustOrder(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.println("Enter in the amount ordered by the customer");
@@ -235,8 +233,9 @@ public class Warehouse
     }
 
     //Processing Customer Returns.
-    public void processCustReturn(String itemNumber, int items, int info)
+    public void processCustReturn(int items, int info)
     {
+        itemNumber = validItemNumber(items, info);
         Item foundItem = null;
         foundItem = validateAllItems(itemNumber, items);
         System.out.println("Input the amount returned: ");

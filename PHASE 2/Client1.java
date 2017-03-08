@@ -36,7 +36,7 @@ public class Client1
         {
             switch(menuChoice)
             {
-                case 1: System.out.println("Inventory item inquiry");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
+                case 1: System.out.println("Inventory item inquiry");warehouse.inventoryInformationInquiry(number_of_items_in_warehouse, number_of_items_info);break;
                 case 2: System.out.println("Warehouse and Inventory Maintenance"); invMenuChoice(number_of_items_in_warehouse, number_of_items_info);break;
                 case 3: System.out.println("Process transactions from the file"); break;
                 case 4: System.out.println("End of Day Processing");warehouse.endOfDayProc(number_of_items_in_warehouse, number_of_items_info);break;

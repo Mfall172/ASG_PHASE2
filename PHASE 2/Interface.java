@@ -29,14 +29,14 @@ public class Interface
         {
             switch(menuChoice)
             {
-                case 1: System.out.println("Inventory Item Inquiry");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 2: System.out.println("Order inventory items from Supplier");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 3: System.out.println("Receive shipment from Suppliers");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 4: System.out.println("Return items to Supplier");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 5: System.out.println("Ship items to Customers");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 6: System.out.println("Process Customer Order");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 7: System.out.println("Process Customer Returns");warehouse.validItemNumber(number_of_items_in_warehouse, number_of_items_info, menuChoice); break;
-                case 8: System.out.println("End of Day Processing");warehouse.endOfDayProc(number_of_items_in_warehouse, number_of_items_info); break;
+                case 1: System.out.println("Inventory Item Inquiry");warehouse.inventoryInformationInquiry(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 2: System.out.println("Order inventory items from Supplier");warehouse.orderInventoryItems (number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 3: System.out.println("Receive shipment from Suppliers");warehouse.receiveShipmentFromSuppliers(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 4: System.out.println("Return items to Supplier");warehouse.returnItemsToSupplier(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 5: System.out.println("Ship items to Customers");warehouse.shipItemsToCustomers(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 6: System.out.println("Process Customer Order");warehouse.processCustOrder(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 7: System.out.println("Process Customer Returns");warehouse.processCustReturn(number_of_items_in_warehouse, number_of_items_info); break;
+                                 case 8: System.out.println("End of Day Processing");warehouse.endOfDayProc(number_of_items_in_warehouse, number_of_items_info); break;
                 default:
                 System.out.println("Incorrect choice. Please try again");
 
