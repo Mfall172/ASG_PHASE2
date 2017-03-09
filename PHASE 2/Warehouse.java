@@ -36,6 +36,7 @@ public class Warehouse
     int econOrderQtyInfo;
 
     // the constructor
+    String warehouse_Items_TEST[];
     public Warehouse() 
     {
         warehouse_Items = new String [MAX];
@@ -122,11 +123,11 @@ public class Warehouse
     }
 
     //This will set all the items that passed through the valididation.
-    public Item validateAllItems(String itemNumber, int items)
+    public Item validateAllItems(String itemNumber)
     {
         String infoID = "";
         Item foundItem = null;
-        for(int i = 0; i < items; i++)
+        for(int i = 0; i < item_List.size(); i++)
         {
             infoID = item_List.get(i).getItemNo();
             if(itemNumber.equals(infoID))
@@ -142,7 +143,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         if (foundItem == null)
         {
             System.out.println("Item: " + itemNumber + " is not stocked");
@@ -158,7 +159,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.print("Enter the amount of "+ foundItem.getItemName() + " to be ordered: ");
         int ordered = keyboard.nextInt();
         //When ordering items. The calculations should be in the item class. So the user won't be able to change it. 
@@ -181,7 +182,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.print("Enter the amount of shipments received from the suppliers: ");
         int received = keyboard.nextInt();
         foundItem.receiveShipment(received);
@@ -195,7 +196,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.println("Enter the amount that will be returned to the supplier: ");
         int returned = keyboard.nextInt();
         foundItem.returningItems(returned);
@@ -208,7 +209,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.println("Enter the amount that is requested to be shipped to the customer: ");
         int requested = keyboard.nextInt();
         foundItem.shippingTheItemsToCustomers(requested);
@@ -222,7 +223,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.println("Enter in the amount ordered by the customer");
         int numUnit = keyboard.nextInt();
         foundItem.customerOrder(numUnit);
@@ -236,7 +237,7 @@ public class Warehouse
     {
         itemNumber = validItemNumber(items, info);
         Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
+        foundItem = validateAllItems(itemNumber);
         System.out.println("Input the amount returned: ");
         int returned = keyboard.nextInt();
         foundItem.customerReturns(returned);
@@ -244,14 +245,53 @@ public class Warehouse
         System.out.println("On hand amount is: " + foundItem.getOnHand());
     }
 
-    //Add item
-    public void addItem(int items, int info)
+    public void addItem(String itemNumber)
     {
-        itemNumber = validItemNumber(items, info);
-        Item foundItem = null;
-        foundItem = validateAllItems(itemNumber, items);
-        
+        Item check = null;
+        check = validateAllItems(itemNumber);
+        if(check != null){
+            System.out.println("The item cannot be created. Item already exists.");
+        }
+        else
+        {
+            System.out.println("The item was not found. The item will be created.");
+            createItem();
+        }
+    }
+    
+    public Item createItem()
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter item number: ");
+        String itemNum = scan.nextLine();
+        System.out.println("Enter item name: ");
+        String itemName = scan.nextLine();
+        System.out.println("Enter amount in stock: ");
+        int stock = scan.nextInt();
+        System.out.println("Enter unit price of the item: ");
+        double price = scan.nextDouble();
+        System.out.println("Enter the reorder amount: ");
+        int reorder = scan.nextInt();
+        System.out.println("Enter the econ order quantity: ");
+        int eoq = scan.nextInt();
+        item_List.add(new Item(itemNum,itemName,stock,reorder,eoq,price));
+        return(new Item(itemNum,itemName,stock,reorder,eoq,price));
+    }
+    
+    public void removeItem(String itemNumber)
+    {
+        Item check = null;
+        validateAllItems(itemNumber);
+        if(check != null){
+            item_List.remove(check);
+        }
+        else
+            System.out.println("Item could not be found.");
+    }
 
+    public void itemPosition(Item check)
+    {
+        
     }
 
     //End of day processing.
