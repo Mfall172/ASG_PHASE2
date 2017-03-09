@@ -36,7 +36,6 @@ public class Warehouse
     int econOrderQtyInfo;
 
     // the constructor
-    String warehouse_Items_TEST[];
     public Warehouse() 
     {
         warehouse_Items = new String [MAX];
