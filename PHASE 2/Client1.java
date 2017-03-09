@@ -37,7 +37,25 @@ public class Client1
             switch(menuChoice)
             {
                 case 1: System.out.println("Inventory item inquiry");warehouse.inventoryInformationInquiry(number_of_items_in_warehouse, number_of_items_info);break;
-                case 2: System.out.println("Warehouse and Inventory Maintenance"); invMenuChoice(number_of_items_in_warehouse, number_of_items_info);break;
+                case 2: System.out.println("Warehouse and Inventory Maintenance"); 
+                System.out.println("Please choose one of the following options: ");
+                invMenu();
+                menuChoice = keyboard.nextInt();
+                while(menuChoice != 4)
+                {
+                    switch(menuChoice)
+                    {
+                        case 1: System.out.println("Adding an Item to the Warehoue");warehouse.addItem(number_of_items_in_warehouse,number_of_items_info); break;
+                        case 2: System.out.println("Removing an Item from the Warehouse"); break;
+                        case 3: System.out.println("Changing the price of an Item in the Warehouse"); break;
+                        default:
+                        System.out.println("Incorrect choice. Please try again");
+                    }
+                    System.out.println("Please choose one of the following options: ");
+                    invMenu();
+                    menuChoice = keyboard.nextInt();
+                }
+                break;
                 case 3: System.out.println("Process transactions from the file"); break;
                 case 4: System.out.println("End of Day Processing");warehouse.endOfDayProc(number_of_items_in_warehouse, number_of_items_info);break;
                 default:
@@ -62,28 +80,6 @@ public class Client1
         System.out.println("4) End of Day Processing");
         System.out.println();
         System.out.println("5) Exit");
-    }
-
-    public static void invMenuChoice(int items, int info)
-    {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Please choose one of the following options: ");
-        invMenu();
-        int menuChoice = keyboard.nextInt();
-        while(menuChoice != 4)
-        {
-            switch(menuChoice)
-            {
-                case 1: System.out.println("Adding an Item to the Warehoue"); break;
-                case 2: System.out.println("Removing an Item from the Warehouse"); break;
-                case 3: System.out.println("Changing the price of an Item in the Warehouse"); break;
-                default:
-                System.out.println("Incorrect choice. Please try again");
-            }
-            System.out.println("Please choose one of the following options: ");
-            invMenu();
-            menuChoice = keyboard.nextInt();
-        }
     }
 
     /**

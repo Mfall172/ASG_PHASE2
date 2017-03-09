@@ -245,6 +245,16 @@ public class Warehouse
         System.out.println("On hand amount is: " + foundItem.getOnHand());
     }
 
+    //Add item
+    public void addItem(int items, int info)
+    {
+        itemNumber = validItemNumber(items, info);
+        Item foundItem = null;
+        foundItem = validateAllItems(itemNumber, items);
+        
+
+    }
+
     //End of day processing.
     public void endOfDayProc(int items, int info)
     {
