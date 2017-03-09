@@ -281,7 +281,7 @@ public class Warehouse
     public void removeItem(String itemNumber)
     {
         Item check = null;
-        validateAllItems(itemNumber);
+        check = validateAllItems(itemNumber);
         if(check != null){
             item_List.remove(check);
         }
@@ -289,9 +289,36 @@ public class Warehouse
             System.out.println("Item could not be found.");
     }
 
-    public void itemPosition(Item check)
+    public void changeItemPrice(String itemNumber)
     {
+        Scanner scan = new Scanner(System.in);
+        Item check = null;
+        double priceChange = 0.0;
+        int ref = 0;
         
+        check = validateAllItems(itemNumber);
+        if(check != null){
+            System.out.println("The item number is valid. Please enter the amount to set " + itemNumber + "'s price to: ");
+            priceChange = scan.nextDouble();
+            ref = itemPosition(itemNumber);
+            item_List.set(ref,check).setUnitPrice(priceChange);
+        }
+        else
+            System.out.println("Item is not valid.");
+    }
+    
+    public int itemPosition(String itemNumber)
+    {
+        int i = 0;
+        int j = 0;
+        
+        while(i < item_List.size()){
+            if(item_List.get(i).getItemNo().equals(itemNumber)){
+                j = i;
+            }
+            i++;
+        }
+        return j;
     }
 
     //End of day processing.
